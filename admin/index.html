@@ -6,16 +6,7 @@
     <title>Admin</title>
   </head>
   <body>
-    <!-- 1) Desliga o auto-init do Decap -->
-    <script>window.CMS_MANUAL_INIT = true;</script>
-
-    <!-- 2) Carrega o Decap (pode manter ^3, mas se preferir fixe 3.8.1) -->
-    <!-- <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script> -->
+    <!-- Apenas o Decap; sem CMS_MANUAL_INIT e sem CMS.init(...) -->
     <script src="https://unpkg.com/decap-cms@3.8.1/dist/decap-cms.js"></script>
-
-    <!-- 3) Inicializa UMA vez apontando para o config.yml -->
-    <script>
-      CMS.init({ configPath: 'config.yml' });
-    </script>
   </body>
 </html>
