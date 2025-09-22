@@ -12,14 +12,14 @@ module.exports = function(eleventyConfig) {
     return plain.length > n ? plain.slice(0, n) + "…" : plain;
   });
 
-  return {
-    dir: {
-      input: "src",          // <- a entrada agora é /src
-      includes: "_includes", // <- então layouts ficam em /src/_includes
-      output: "_site"
-    },
-    markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk",
-    templateFormats: ["njk", "md"]
-  };
+ return {
+  dir: {
+    input: ".",                // <- raiz do projeto (enxerga src/ e content/)
+    includes: "src/_includes", // layouts continuam onde estão
+    output: "_site"
+  },
+  markdownTemplateEngine: "njk",
+  htmlTemplateEngine: "njk",
+  templateFormats: ["njk","md"]
+};
 };
