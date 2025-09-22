@@ -3,7 +3,7 @@ backend:
   repo: tet434950-droid/scan2
   branch: main
   base_url: https://steep-cloud-d8dc.tet434950.workers.dev
-  auth_endpoint: /
+  auth_endpoint: /callback
 
 media_folder: "static/uploads"
 public_folder: "/uploads"
