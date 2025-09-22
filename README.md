@@ -25,4 +25,3 @@ auth_endpoint: /
 - **Output directory**: `_site`
 
 Abra `/admin/` para usar o CMS.
-Deploy de teste ✅
