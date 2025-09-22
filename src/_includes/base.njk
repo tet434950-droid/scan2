@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title or "Novels" }}</title>
+    <meta name="description" content="{{ description or 'Site de novels' }}">
+    <link rel="stylesheet" href="/assets/site.css">
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">Novels</a></h1>
+      <nav><a href="/admin/">Admin</a></nav>
+    </header>
+    <main>
+      {{ content | safe }}
+    </main>
+    <footer>
+      <p>&copy; {{ now | date("yyyy") }} — Feito com Eleventy + Decap CMS</p>
+    </footer>
+  </body>
+</html>

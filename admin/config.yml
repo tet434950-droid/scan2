@@ -1,0 +1,22 @@
+backend:
+  name: github
+  repo: tet434950-droid/scan2
+  branch: main
+  base_url: https://steep-cloud-d8dc.tet434950.workers.dev
+  auth_endpoint: /
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "chapters"
+    label: "Capítulos"
+    folder: "content/chapters"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Título" }
+      - { name: "date", label: "Data", widget: "datetime" }
+      - { name: "tags", label: "Tags", widget: "list", required: false }
+      - { name: "excerpt", label: "Resumo", widget: "text", required: false }
+      - { name: "body", label: "Conteúdo", widget: "markdown" }

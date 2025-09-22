@@ -1,0 +1,28 @@
+---
+layout: base.njk
+---
+<article class="chapter">
+  <h1>{{ title }}</h1>
+  <p><small>{{ page.date | date("yyyy-LL-dd") }}</small></p>
+  <div class="chapter-content">
+    {{ content | safe }}
+  </div>
+  <nav>
+    {% set list = collections.chapters %}
+    {% for p in list %}
+      {% if p.url == page.url %}
+        {% set idx = loop.index0 %}
+      {% endif %}
+    {% endfor %}
+    <div>
+      {% if idx > 0 %}
+        {% set prev = list[idx - 1] %}
+        <a href="{{ prev.url }}">← {{ prev.data.title }}</a>
+      {% endif %}
+      {% if idx + 1 < list.length %}
+        {% set next = list[idx + 1] %}
+        <a href="{{ next.url }}" style="float:right">{{ next.data.title }} →</a>
+      {% endif %}
+    </div>
+  </nav>
+</article>

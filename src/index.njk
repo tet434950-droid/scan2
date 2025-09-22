@@ -1,0 +1,24 @@
+---
+pagination:
+  data: collections.chapters
+  size: 10
+  alias: items
+layout: base.njk
+title: "Capítulos"
+---
+<ul>
+{% for post in items %}
+  <li>
+    <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+    <small>{{ post.date | date("yyyy-LL-dd") }}</small>
+    <p>{{ (post.templateContent or "") | excerpt(200) }}</p>
+  </li>
+{% endfor %}
+</ul>
+
+{% if pagination.pageNumber > 0 %}
+  <a href="{{ pagination.href.previous }}">← Página anterior</a>
+{% endif %}
+{% if pagination.pageNumber + 1 < pagination.pages.length %}
+  <a href="{{ pagination.href.next }}" style="float:right">Próxima página →</a>
+{% endif %}
