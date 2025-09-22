@@ -1,25 +1,31 @@
-<!doctype html>
-<html lang="pt-br">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>{{ title or "Site de Novels" }}</title>
-  <link rel="stylesheet" href="/assets/site.css" />
-</head>
-<body>
-  <header>
-    <h1><a href="/">Site de Novels</a></h1>
-    <nav><a href="/">Início</a> | <a href="/sitemap/">Sitemap</a></nav>
-    <hr/>
-  </header>
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title or "Site de Novels" }}</title>
 
-  <main>
-    {% block content %}{% endblock %}
-  </main>
+    {# 🔗 CSS global #}
+    <link rel="stylesheet" href="/assets/site.css" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">Site de Novels</a></h1>
+      <nav>
+        <a href="/">Início</a> |
+        <a href="/sitemap.xml">Sitemap</a>
+      </nav>
+      <hr />
+    </header>
 
-  <footer>
-    <hr/>
-    <p>© {{ "now" | date("yyyy") }} • Feito com Eleventy + Decap CMS</p>
-  </footer>
-</body>
+    <main>
+      {# Aqui entra o conteúdo de cada página #}
+      {{ content | safe }}
+    </main>
+
+    <footer>
+      <hr />
+      <p>© {{ "now" | date("yyyy") }} • Feito com Eleventy + Decap CMS</p>
+    </footer>
+  </body>
 </html>
