@@ -1,8 +1,9 @@
 module.exports = function(eleventyConfig) {
-  // Copiar arquivos estáticos (uploads)
+  // Copiar uploads e admin como estáticos
   eleventyConfig.addPassthroughCopy({ "static": "uploads" });
+  eleventyConfig.addPassthroughCopy("admin");
 
-  // Coleção "chapters"
+  // Coleção chapters
   eleventyConfig.addCollection("chapters", (api) => {
     return api.getFilteredByGlob("content/chapters/*.md")
       .sort((a, b) => (b.date || b.data.date) - (a.date || a.data.date));
@@ -15,7 +16,7 @@ module.exports = function(eleventyConfig) {
     return plain.length > n ? plain.slice(0, n) + "…" : plain;
   });
 
-  // 🔑 Filtro de data (corrige o erro "filter not found: date")
+  // Filtro de data para Nunjucks
   eleventyConfig.addNunjucksFilter("date", (value, formatStr = "yyyy-LL-dd") => {
     const d = value === "now"
       ? new Date()
@@ -29,18 +30,17 @@ module.exports = function(eleventyConfig) {
 
     if (formatStr === "yyyy") return yyyy;
     if (formatStr === "yyyy-LL-dd") return `${yyyy}-${mm}-${dd}`;
-
     return d.toISOString();
   });
 
   return {
     dir: {
-      input: ".",                // raiz (enxerga src/ e content/)
-      includes: "src/_includes", // layouts ficam em src/_includes
+      input: ".",                // raiz (lê src/ e content/)
+      includes: "src/_includes", // layouts
       output: "_site"
     },
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
-    templateFormats: ["njk", "md"]
+    templateFormats: ["njk", "md", "html"] // html aqui ajuda a passar /admin/index.html
   };
 };
